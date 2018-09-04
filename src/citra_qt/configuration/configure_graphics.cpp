@@ -57,6 +57,9 @@ ConfigureGraphics::ConfigureGraphics(QWidget* parent)
         const QIcon color_icon(pixmap);
         ui->bg_button->setIcon(color_icon);
     });
+
+    ui->AddTicks->setEnabled(Settings::values.FMV_hack);
+    connect(ui->FMV_hack, &QCheckBox::stateChanged, ui->AddTicks, &QSpinBox::setEnabled);
 }
 
 ConfigureGraphics::~ConfigureGraphics() = default;
@@ -84,6 +87,8 @@ void ConfigureGraphics::SetConfiguration() {
     pixmap.fill(bg_color);
     const QIcon color_icon(pixmap);
     ui->bg_button->setIcon(color_icon);
+    ui->FMV_hack->setChecked(Settings::values.FMV_hack);
+    ui->AddTicks->setValue(Settings::values.AddTicks);
 }
 
 void ConfigureGraphics::ApplyConfiguration() {
@@ -109,6 +114,8 @@ void ConfigureGraphics::ApplyConfiguration() {
     Settings::values.bg_red = static_cast<float>(bg_color.redF());
     Settings::values.bg_green = static_cast<float>(bg_color.greenF());
     Settings::values.bg_blue = static_cast<float>(bg_color.blueF());
+    Settings::values.FMV_hack = ui->FMV_hack->isChecked();
+    Settings::values.AddTicks = ui->AddTicks->value();
 }
 
 void ConfigureGraphics::updateShaders(bool anaglyph) {
