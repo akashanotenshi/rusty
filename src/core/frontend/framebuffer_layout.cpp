@@ -116,13 +116,13 @@ FramebufferLayout MediumFrameLayout(unsigned width, unsigned height, bool swappe
     float large_screen_aspect_ratio = swapped ? BOT_SCREEN_ASPECT_RATIO : TOP_SCREEN_ASPECT_RATIO;
     float small_screen_aspect_ratio = swapped ? TOP_SCREEN_ASPECT_RATIO : BOT_SCREEN_ASPECT_RATIO;
 
-    MathUtil::Rectangle<unsigned> screen_window_area{0, 0, width, height};
-    MathUtil::Rectangle<unsigned> total_rect =
+    Common::Rectangle<unsigned> screen_window_area{0, 0, width, height};
+    Common::Rectangle<unsigned> total_rect =
         maxRectangle(screen_window_area, emulation_aspect_ratio);
-    MathUtil::Rectangle<unsigned> large_screen =
+    Common::Rectangle<unsigned> large_screen =
         maxRectangle(total_rect, large_screen_aspect_ratio);
-    MathUtil::Rectangle<unsigned> fourth_size_rect = total_rect.Scale(.55f);
-    MathUtil::Rectangle<unsigned> small_screen =
+    Common::Rectangle<unsigned> fourth_size_rect = total_rect.Scale(.55f);
+    Common::Rectangle<unsigned> small_screen =
         maxRectangle(fourth_size_rect, small_screen_aspect_ratio);
 
     if (window_aspect_ratio < emulation_aspect_ratio) {
