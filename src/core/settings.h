@@ -22,6 +22,7 @@ enum class InitClock {
 enum class LayoutOption {
     Default,
     SingleScreen,
+    MediumScreen,
     LargeScreen,
     SideScreen,
 };
@@ -144,8 +145,13 @@ struct Values {
     bool use_shader_jit;
     u16 resolution_factor;
     bool vsync_enabled;
+    bool use_format_reinterpret_hack;
     bool use_frame_limit;
     u16 frame_limit;
+    bool FMV_hack;
+    u16 AddTicks;
+    bool custom_refresh_rate;
+    int screen_refresh_rate;
 
     LayoutOption layout_option;
     bool swap_screen;
