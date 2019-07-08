@@ -360,7 +360,6 @@ void RendererOpenGL::InitOpenGLObjects() {
 }
 
 void RendererOpenGL::ReloadSampler() {
-    glSamplerParameteri(filter_sampler.handle, GL_TEXTURE_MAX_LEVEL, 0);
     glSamplerParameteri(filter_sampler.handle, GL_TEXTURE_MIN_FILTER,
                         Settings::values.filter_mode ? GL_LINEAR : GL_NEAREST);
     glSamplerParameteri(filter_sampler.handle, GL_TEXTURE_MAG_FILTER,
