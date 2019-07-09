@@ -14,10 +14,10 @@ DynarmicCP15::DynarmicCP15(const std::shared_ptr<ARMul_State>& state) : interpre
 
 DynarmicCP15::~DynarmicCP15() = default;
 
-boost::optional<Callback> DynarmicCP15::CompileInternalOperation(bool two, unsigned opc1,
-                                                                 CoprocReg CRd, CoprocReg CRn,
-                                                                 CoprocReg CRm, unsigned opc2) {
-    return boost::none;
+std::optional<Callback> DynarmicCP15::CompileInternalOperation(bool two, unsigned opc1,
+                                                               CoprocReg CRd, CoprocReg CRn,
+                                                               CoprocReg CRm, unsigned opc2) {
+    return std::nullopt;
 }
 
 CallbackOrAccessOneWord DynarmicCP15::CompileSendOneWord(bool two, unsigned opc1, CoprocReg CRn,
@@ -75,14 +75,14 @@ CallbackOrAccessTwoWords DynarmicCP15::CompileGetTwoWords(bool two, unsigned opc
     return boost::blank{};
 }
 
-boost::optional<Callback> DynarmicCP15::CompileLoadWords(bool two, bool long_transfer,
-                                                         CoprocReg CRd,
-                                                         boost::optional<u8> option) {
-    return boost::none;
+std::optional<Callback> DynarmicCP15::CompileLoadWords(bool two, bool long_transfer,
+                                                       CoprocReg CRd,
+                                                       std::optional<u8> option) {
+    return std::nullopt;
 }
 
-boost::optional<Callback> DynarmicCP15::CompileStoreWords(bool two, bool long_transfer,
-                                                          CoprocReg CRd,
-                                                          boost::optional<u8> option) {
-    return boost::none;
+std::optional<Callback> DynarmicCP15::CompileStoreWords(bool two, bool long_transfer,
+                                                        CoprocReg CRd,
+                                                        std::optional<u8> option) {
+    return std::nullopt;
 }
