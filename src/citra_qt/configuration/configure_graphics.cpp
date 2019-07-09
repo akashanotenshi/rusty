@@ -18,6 +18,8 @@ ConfigureGraphics::ConfigureGraphics(QWidget* parent)
     SetConfiguration();
 
     connect(ui->toggle_frame_limit, &QCheckBox::toggled, ui->frame_limit, &QSpinBox::setEnabled);
+    ui->AddTicks->setEnabled(Settings::values.FMV_hack);
+    connect(ui->FMV_hack, &QCheckBox::stateChanged, ui->AddTicks, &QSpinBox::setEnabled);
 
     ui->layoutBox->setEnabled(!Settings::values.custom_layout);
 
@@ -84,6 +86,8 @@ void ConfigureGraphics::SetConfiguration() {
     pixmap.fill(bg_color);
     const QIcon color_icon(pixmap);
     ui->bg_button->setIcon(color_icon);
+    ui->FMV_hack->setChecked(Settings::values.FMV_hack);
+    ui->AddTicks->setValue(Settings::values.AddTicks);
 }
 
 void ConfigureGraphics::ApplyConfiguration() {
@@ -97,6 +101,8 @@ void ConfigureGraphics::ApplyConfiguration() {
     Settings::values.use_frame_limit = ui->toggle_frame_limit->isChecked();
     Settings::values.frame_limit = ui->frame_limit->value();
     Settings::values.use_format_reinterpret_hack = ui->toggle_format_reinterpret_hack->isChecked();
+    Settings::values.FMV_hack = ui->FMV_hack->isChecked();
+    Settings::values.AddTicks = ui->AddTicks->value();
     Settings::values.render_3d =
         static_cast<Settings::StereoRenderOption>(ui->render_3d_combobox->currentIndex());
     Settings::values.factor_3d = ui->factor_3d->value();
