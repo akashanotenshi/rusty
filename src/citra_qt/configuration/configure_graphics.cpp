@@ -19,9 +19,9 @@ ConfigureGraphics::ConfigureGraphics(QWidget* parent)
 
     connect(ui->toggle_frame_limit, &QCheckBox::toggled, ui->frame_limit, &QSpinBox::setEnabled);
     ui->AddTicks->setEnabled(Settings::values.FMV_hack);
-    connect(ui->FMV_hack, &QCheckBox::stateChanged, ui->AddTicks, &QSpinBox::setEnabled);
+    connect(ui->FMV_hack, &QCheckBox::toggled, ui->AddTicks, &QSpinBox::setEnabled);
     ui->screen_refresh_rate->setEnabled(Settings::values.custom_refresh_rate);
-    connect(ui->custom_refresh_rate, &QCheckBox::stateChanged, ui->screen_refresh_rate, &QSpinBox::setEnabled);
+    connect(ui->custom_refresh_rate, &QCheckBox::toggled, ui->screen_refresh_rate, &QSpinBox::setEnabled);
 
     ui->layoutBox->setEnabled(!Settings::values.custom_layout);
 
