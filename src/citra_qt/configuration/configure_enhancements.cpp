@@ -47,6 +47,7 @@ ConfigureEnhancements::ConfigureEnhancements(QWidget* parent)
 
 void ConfigureEnhancements::SetConfiguration() {
     ui->resolution_factor_combobox->setCurrentIndex(Settings::values.resolution_factor);
+    ui->toggle_format_reinterpret_hack->setChecked(Settings::values.use_format_reinterpret_hack);
     ui->render_3d_combobox->setCurrentIndex(static_cast<int>(Settings::values.render_3d));
     ui->factor_3d->setValue(Settings::values.factor_3d);
     updateShaders(Settings::values.render_3d == Settings::StereoRenderOption::Anaglyph);
@@ -88,6 +89,7 @@ void ConfigureEnhancements::RetranslateUI() {
 void ConfigureEnhancements::ApplyConfiguration() {
     Settings::values.resolution_factor =
         static_cast<u16>(ui->resolution_factor_combobox->currentIndex());
+    Settings::values.use_format_reinterpret_hack = ui->toggle_format_reinterpret_hack->isChecked();
     Settings::values.render_3d =
         static_cast<Settings::StereoRenderOption>(ui->render_3d_combobox->currentIndex());
     Settings::values.factor_3d = ui->factor_3d->value();
