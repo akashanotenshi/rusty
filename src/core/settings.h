@@ -151,6 +151,8 @@ struct Values {
     u16 frame_limit;
     bool FMV_hack;
     u16 AddTicks;
+    bool custom_refresh_rate;
+    int screen_refresh_rate;
     bool Mipmaps;
 
     LayoutOption layout_option;
